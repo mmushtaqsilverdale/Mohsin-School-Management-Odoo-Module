@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_student_detail">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <table class="table table-condensed" style="border: 3px solid black !important;"
+                                       width="50%">
+                                    <tr>
+                                        <td width="40%">
+                                            <p style="text-align:center;padding-top:10px;">
+                                                <img t-if="o.image_1920" t-att-src="image_data_uri(o.image_1920)"
+                                                     alt="img"
+                                                     height="140"
+                                                     border="1" width="120"/>
+                                            </p>
+                                        </td>
+                                        <td width="60%">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Name</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td colspan="3" class="text-center">
+                                                        <span t-field="o.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Roll Number</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.roll_no"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Course</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.course_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Batch</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.batch_id"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Phone</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.phone"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <!-- Subjects -->
+                        <t t-if="o.student_subject_line">
+                            <span>
+                                <strong>Subjects</strong>
+                            </span>
+                            <table class="table table-sm o_main_table" name="subjects">
+                                <thead>
+                                    <tr>
+                                        <th name="name" class="text-center">
+                                            <span>Subject Name</span>
+                                        </th>
+                                        <th name="subjects" class="text-center">
+                                            <span>Courses for Subject</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <t t-set="course_count" t-value="0"/>
+                                <t t-foreach="o.student_subject_line" t-as="line">
+                                    <t t-set="course_count" t-value="course_count + 1"/>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span t-field="line.subject_ids"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.subject_id"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

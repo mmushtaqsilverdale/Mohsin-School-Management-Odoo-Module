@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+        <menuitem id="mohsin_school_root" name="Mohsin School" sequence="0"/>
+
+        <menuitem id="mohsin_school_configuration" name="Configuration" parent="mohsin_school_root" sequence="500"/>
+
+        <menuitem name="Courses" id="menu_school_courses"
+                  parent="mohsin_school_root"
+                  sequence="30"/>
+
+        <menuitem name="Teachers" id="menu_mohsin_school_teachers"
+                  parent="mohsin_school_root"
+                  sequence="10"/>
+
+        <menuitem name="Students" id="menu_mohsin_school_students"
+                  parent="mohsin_school_root"
+                  sequence="20"
+        />
+
+
+        <menuitem name="Attendance" id="menu_mohsin_school_student_attendance_config"
+                  parent="mohsin_school_configuration"
+                  sequence="100"
+        />
+
+        <menuitem name="Attendance" id="menu_mohsin_school_student_attendance_main"
+                  parent="mohsin_school_root"
+                  sequence="110"
+        />
+
+
+    </data>
+</odoo>
+

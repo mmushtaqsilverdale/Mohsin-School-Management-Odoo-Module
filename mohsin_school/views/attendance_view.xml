@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+
+        <record id="student_attendance_tree_view" model="ir.ui.view">
+            <field name="name">student.attendance.tree.view</field>
+            <field name="model">mohsin.student.attendance</field>
+            <field name="arch" type="xml">
+                <tree string="Student attendances" editable="bottom" sample="1">
+                    <field name="student_attendance_mode" column_invisible="1"/>
+                    <field name="roll_no"/>
+                    <field name="student_id" context="{'form_view_ref':'mohsin_school.student_primary_form_view'}"/>
+                    <field name="date_attendance"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    <field name="subject_id"/>
+                    <field name="subject_ids" />
+                    <field name="attendance_sheet_id" optional="hide"/>
+                    <field name="attendance_status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="school_attendance_calendar_view" model="ir.ui.view">
+            <field name="name">mohsin.school.attendance.calendar.view</field>
+            <field name="model">mohsin.student.attendance</field>
+            <field name="arch" type="xml">
+                <calendar date_start="date_attendance" mode="month">
+                    <field name="attendance_sheet_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="action_student_attendance" model="ir.actions.act_window">
+            <field name="name">Attendances</field>
+            <field name="res_model">mohsin.student.attendance</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_empty_folder">
+                    No attendance records found
+                </p>
+                <p>
+                    The attendance records of your students will be displayed here.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menus -->
+        <menuitem id="menu_school_attendance_attendance"
+                  name="Attendances"
+                  parent="menu_mohsin_school_student_attendance_main"
+                  sequence="20"
+                  action="action_student_attendance"
+        />
+    </data>
+</odoo>
+
+

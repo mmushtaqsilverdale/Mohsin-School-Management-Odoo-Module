@@ -1,0 +1,14 @@
+<odoo>
+    <record id="action_attendance_excel_report" model="ir.actions.act_url">
+        <field name="name">Attendance Excel Report</field>
+        <field name="target">self</field>
+        <field name="url" eval="'/attendance/report/'"/>
+    </record>
+
+    <menuitem name="Attendance Report Excel" id="attendance_excel_report"
+              parent="menu_mohsin_school_student_attendance_main"
+              sequence="120"
+              action="action_attendance_excel_report"
+    />
+</odoo>
+

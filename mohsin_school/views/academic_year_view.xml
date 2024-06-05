@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+
+        <record id="mohsin_school_academic_year_tree_view" model="ir.ui.view">
+			<field name="name">mohsin.school.year.tree.view</field>
+			<field name="model">mohsin.school.year</field>
+			<field name="arch" type="xml">
+				<tree string="Academic Year" editable="bottom" edit="1">
+                    <field name="name"/>
+					<field name="date_start"/>
+					<field name="date_end"/>
+                    <field name="active" column_invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="mohsin_school_academic_year_form_view" model="ir.ui.view">
+			<field name="name">mohsin.school.academic.year.form.view</field>
+			<field name="model">mohsin.school.year</field>
+			<field name="arch" type="xml">
+				<form string="Academic Year">
+					<sheet>
+                        <field name="active" invisible="1"/>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+								<label for="name" />
+							</div>
+							<h1>
+								<field name="name" />
+							</h1>
+						</div>
+                        <group>
+                            <group>
+                                <field name="date_start"/>
+                            </group>
+
+                            <group>
+                                <field name="date_end"/>
+                            </group>
+                        </group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+        <record model="ir.actions.act_window" id="mohsin_school_academic_year_action">
+            <field name="name">Academic Year</field>
+            <field name="res_model">mohsin.school.year</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Academic Year
+                </p>
+                <p>
+                    Create and manage Academic Year for your school
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem name="Academic Year" id="menu_mohsin_school_academic_year_setup"
+                    parent="mohsin_school_configuration" action="mohsin_school_academic_year_action"
+                     sequence="3"/>
+
+    </data>
+</odoo>
